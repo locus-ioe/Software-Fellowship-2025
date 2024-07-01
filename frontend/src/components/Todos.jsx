@@ -11,6 +11,7 @@ import { todosList } from "../assets/json/todos.json";
 
 const Todos = () => {
   const [todos, setTodos] = useState(todosList);
+
   const [newTodoFormData, setNewTododFormData] = useState({
     title: "",
     description: "",
@@ -42,6 +43,16 @@ const Todos = () => {
     setIsCreateTodoActive(false);
   };
 
+  const handleCheckedTodo = (id) => {
+    const updatedTodoList = todos.filter((todo) => {
+      if (id == todo.id) {
+        todo.status = "completed";
+      }
+      return todo;
+    });
+
+    setTodos(updatedTodoList);
+  };
   const handleDeleteTodo = () => {
     /*
     Here,we are just updating in the frontend side
@@ -80,6 +91,7 @@ const Todos = () => {
             />
           }
           onDelete={showDeleteConfirmation}
+          onChecked={handleCheckedTodo}
         />
         <TodoStatusContainer
           title="Completed"
@@ -91,6 +103,7 @@ const Todos = () => {
             />
           }
           onDelete={showDeleteConfirmation}
+          onChecked={handleCheckedTodo}
         />
       </div>
       <div className="flex justify-center items-center mt-16">

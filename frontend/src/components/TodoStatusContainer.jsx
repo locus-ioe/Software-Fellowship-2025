@@ -4,7 +4,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { GrEdit } from "react-icons/gr";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-const TodoStatusContainer = ({ title, todos, icon, onDelete }) => {
+const TodoStatusContainer = ({ title, todos, icon, onDelete, onChecked }) => {
   return (
     <div className="shadow-2xl rounded-[5rem] bg-white px-12 py-10 w-1/2 h-fit">
       <div className="flex space-x-2 my-3 mb-6">
@@ -30,7 +30,10 @@ const TodoStatusContainer = ({ title, todos, icon, onDelete }) => {
                   className="cursor-pointer hover:text-red-500"
                   onClick={() => onDelete(id)}
                 />
-                <FaRegCircleCheck className="cursor-pointer hover:text-green-500" />
+                <FaRegCircleCheck
+                  className="cursor-pointer hover:text-green-500"
+                  onClick={() => onChecked(id)}
+                />
               </div>
             </div>
           );
@@ -45,5 +48,6 @@ TodoStatusContainer.propTypes = {
   todos: PropTypes.array,
   icon: PropTypes.element,
   onDelete: PropTypes.func,
+  onChecked: PropTypes.func,
 };
 export default TodoStatusContainer;
