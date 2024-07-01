@@ -13,7 +13,7 @@ npm init
 
 ## Installation of packages (express and nodemon)
 ```bash
-npm i express nodemon dotnenv
+npm i express nodemon dotnenv mongoose
 ```
 ## Basic express setup
 <img src="./screenshots/initial.png" />
@@ -25,3 +25,6 @@ npm i express nodemon dotnenv
 ## Nodemon setup
 <img src="./screenshots/nodemon.png"/>
 
+
+## Schema Setup
+<img src="./screenshots/schema.png" />
