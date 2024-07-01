@@ -4,7 +4,7 @@
   "description": "Backend for Todo app",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/locus-ioe/Software-Fellowship-2025/issues"
   },
-  "homepage": "https://github.com/locus-ioe/Software-Fellowship-2025#readme"
+  "homepage": "https://github.com/locus-ioe/Software-Fellowship-2025#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
 }
