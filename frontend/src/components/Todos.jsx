@@ -5,9 +5,10 @@ import TodoStatusContainer from "./TodoStatusContainer";
 import { FaCheck } from "react-icons/fa";
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
-import { FaArrowRight } from "react-icons/fa";
 
 import { todosList } from "../assets/json/todos.json";
+import DeleteConfirmation from "./Deleteconfirmation";
+import Popup from "./Popup";
 
 const Todos = () => {
   const [todos, setTodos] = useState(todosList);
@@ -32,33 +33,30 @@ const Todos = () => {
   const [deleteTodoID, setDeleteTodoID] = useState(null);
   const [deleteTaskConfirmation, setDeleteTaskConfirmation] = useState(false);
 
+  // Function to filter todos based on status
   const filterTodos = (status) => {
-    return todos.filter((todo) => todo.status == status);
+    return todos.filter((todo) => todo.status === status);
   };
 
+  // Handler for creating a new todo
   const handleCreateTodo = (e) => {
     e.preventDefault();
 
-    // API call to add new todo
-
-    /*
-    We will get the id of the create todo from the API call since we 
-    donot have api call right now so I will just randomly assign the id
-    */
-
-    console.log(newTodoFormData);
+    // Placeholder for API call to add new todo
+    // Actual API call would fetch the new todo's ID from the backend
     const newTodo = { ...newTodoFormData, id: todos.length, status: "ongoing" };
     setTodos([...todos, newTodo]);
 
+    // Clear form data and close create todo popup
     setNewTodoFormData({ title: "", description: "" });
     setIsCreateTodoActive(false);
   };
 
+  // Handler for editing an existing todo
   const handleEditTodo = (e) => {
     e.preventDefault();
 
-    // Make API call to update the todo in the backend with editTodoFormData
-
+    // Placeholder for API call to update the todo in the backend with editTodoFormData
     const updatedTodos = todos.map((todo) =>
       todo.id === editTodoID ? editTodoFormData : todo
     );
@@ -68,9 +66,10 @@ const Todos = () => {
     setIsEditTodoActive(false);
   };
 
+  // Handler for marking a todo as completed
   const handleCheckedTodo = (id) => {
-    const updatedTodoList = todos.filter((todo) => {
-      if (id == todo.id) {
+    const updatedTodoList = todos.map((todo) => {
+      if (id === todo.id) {
         todo.status = "completed";
       }
       return todo;
@@ -78,13 +77,12 @@ const Todos = () => {
 
     setTodos(updatedTodoList);
   };
+
+  // Handler for deleting a todo
   const handleDeleteTodo = () => {
-    /*
-    Here,we are just updating in the frontend side
-    In integration side we update in backend side too by making api call
-    */
+    // Placeholder for API call to delete the todo in the backend
     const updatedTodoList = todos.filter((todo) => {
-      if (deleteTodoID == todo.id) {
+      if (deleteTodoID === todo.id) {
         todo.status = "deleted";
       }
       return todo;
@@ -95,14 +93,15 @@ const Todos = () => {
     setDeleteTaskConfirmation(false);
   };
 
+  // Function to show delete confirmation popup
   const showDeleteConfirmation = (id) => {
     setDeleteTodoID(id);
     setDeleteTaskConfirmation(true);
   };
 
+  // Function to show edit todo popup
   const showEditTodo = (id) => {
     const selectedTodo = todos.filter((todo) => todo.id === id)[0];
-    console.log(selectedTodo);
     setEditTodoID(id);
     setEditTodoFormData(selectedTodo);
     setIsEditTodoActive(true);
@@ -132,7 +131,7 @@ const Todos = () => {
           todos={filterTodos("completed")}
           icon={
             <FaCheck
-              className="bg-green-500 text-white p-2  rounded-md"
+              className="bg-green-500 text-white p-2 rounded-md"
               size={30}
             />
           }
@@ -151,151 +150,34 @@ const Todos = () => {
         </div>
       </div>
 
-      {/* Create new Todo */}
+      {/* Create New Todo Popup */}
       {isCreateTodoActive && (
-        <div className="fixed inset-0 z-50 ">
-          <div className="bg-[#00000088] w-screen h-screen flex justify-center items-center ">
-            <div className="bg-gray-50 px-16 py-12 rounded-[45px] flex flex-col space-y-12 justify-center items-center shadow-lg w-1/3">
-              <div className="text-4xl font-semibold tracking-wide">
-                <span className="text-stone-500">Enter</span> Task Details
-              </div>
-              <form onSubmit={handleCreateTodo} className="w-full">
-                <div className="mb-6">
-                  <label htmlFor="title" className="block text-xl mb-2">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    placeholder="Enter Title"
-                    className="w-full shadow-md bg-white p-3 rounded-2xl focus:outline-blue-400"
-                    onChange={(e) => {
-                      setNewTodoFormData({
-                        ...newTodoFormData,
-                        title: e.target.value,
-                      });
-                    }}
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="description" className="block text-xl mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    placeholder="Enter Description"
-                    className="w-full shadow-md bg-white p-3 rounded-2xl h-64 focus:outline-blue-400"
-                    onChange={(e) => {
-                      setNewTodoFormData({
-                        ...newTodoFormData,
-                        description: e.target.value,
-                      });
-                    }}
-                  />
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    type="submit"
-                    className="bg-blue-500 text-white text-xl py-3 px-6 rounded-3xl shadow-lg hover:bg-blue-600 transition duration-300 flex justify-center items-center gap-4"
-                  >
-                    Add Task <FaArrowRight />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <Popup
+          title="Enter Task Details"
+          onSubmit={handleCreateTodo}
+          formData={newTodoFormData}
+          setFormData={setNewTodoFormData}
+          onClose={() => setIsCreateTodoActive(false)}
+        />
       )}
 
-      {/* Edit Todo */}
+      {/* Edit Todo Popup */}
       {isEditTodoActive && (
-        <div className="fixed inset-0 z-50 ">
-          <div className="bg-[#00000088] w-screen h-screen flex justify-center items-center ">
-            <div className="bg-gray-50 px-16 py-12 rounded-[45px] flex flex-col space-y-12 justify-center items-center shadow-lg w-1/3">
-              <div className="text-4xl font-semibold tracking-wide">
-                <span className="text-stone-500">Edit</span> Task Details
-              </div>
-              <form onSubmit={handleEditTodo} className="w-full">
-                <div className="mb-6">
-                  <label htmlFor="title" className="block text-xl mb-2">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    placeholder="Enter Title"
-                    className="w-full shadow-md bg-white p-3 rounded-2xl focus:outline-blue-400"
-                    onChange={(e) => {
-                      setEditTodoFormData({
-                        ...editTodoFormData,
-                        title: e.target.value,
-                      });
-                    }}
-                    value={editTodoFormData.title}
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="description" className="block text-xl mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    placeholder="Enter Description"
-                    className="w-full shadow-md bg-white p-3 rounded-2xl h-64 focus:outline-blue-400"
-                    onChange={(e) => {
-                      setEditTodoFormData({
-                        ...editTodoFormData,
-                        description: e.target.value,
-                      });
-                    }}
-                    value={editTodoFormData.description}
-                  />
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    type="submit"
-                    className="bg-blue-500 text-white text-xl py-3 px-6 rounded-3xl shadow-lg hover:bg-blue-600 transition duration-300 flex justify-center items-center gap-4"
-                  >
-                    Edit Task <FaArrowRight />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <Popup
+          title="Edit Task Details"
+          onSubmit={handleEditTodo}
+          formData={editTodoFormData}
+          setFormData={setEditTodoFormData}
+          onClose={() => setIsEditTodoActive(false)}
+        />
       )}
-      {/* Delete Task Confirmation Popup Element */}
+
+      {/* Delete Confirmation Popup */}
       {deleteTaskConfirmation && (
-        <div className="fixed inset-0 z-50 ">
-          <div className="bg-[#00000088] w-screen h-screen flex justify-center items-center ">
-            <div className=" bg-white px-16 py-12 rounded-[45px] flex flex-col space-y-12 justify-center items-center">
-              <div className="text-4xl font-semibold tracking-wide">
-                <span className="text-stone-500">Delete</span> Task?
-              </div>
-              <div className="flex justify-center items-center gap-8 text-white text-xl tracking-wide">
-                <button
-                  className="rounded-3xl bg-[#578EFB] px-7 py-3 shadow-md hover:bg-[#2869eb]"
-                  onClick={handleDeleteTodo}
-                >
-                  Yes
-                </button>
-                <button
-                  className="rounded-3xl bg-gray-400 px-7 py-3 shadow-md hover:bg-gray-500"
-                  onClick={() => {
-                    setDeleteTodoID(null);
-                    setDeleteTaskConfirmation(false);
-                  }}
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <DeleteConfirmation
+          onConfirm={handleDeleteTodo}
+          onCancel={() => setDeleteTaskConfirmation(false)}
+        />
       )}
     </>
   );
