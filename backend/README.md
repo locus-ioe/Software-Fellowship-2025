@@ -28,3 +28,5 @@ npm i express nodemon dotnenv mongoose
 
 ## Schema Setup
 <img src="./screenshots/schema.png" />
+
+## mongoose setup
