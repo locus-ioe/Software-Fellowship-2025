@@ -9,6 +9,7 @@ const todoModelSchema = new mongoose.Schema({
   },
   status: {
     type: String,
+    enum: ["ongoing", "completed", "deleted"],
     default: "ongoing",
   },
 });
