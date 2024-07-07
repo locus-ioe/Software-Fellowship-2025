@@ -32,9 +32,10 @@ body {
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+}
+.calculator button{
     cursor: pointer;
 }
-
 .calculator .output {
     grid-column: span 4;
     background-color: #000;
