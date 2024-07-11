@@ -3,6 +3,9 @@ const app = express();
 
 const Todo = require("./models/todoModel");
 
+const cors = require("cors");
+app.use(cors());
+
 app.use(express.json());
 
 // Get all todos
