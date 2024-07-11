@@ -10,15 +10,18 @@ import { IoIosAddCircle } from "react-icons/io";
 import DeleteConfirmation from "./Deleteconfirmation";
 import Popup from "./Popup";
 
+const URL =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_SERVER_URL
+    : "http://localhost:3000";
+
 const Todos = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/todos");
-
-        console.log("Fetched todos:", response);
+        const response = await axios.get(`${URL}/api/todos`);
 
         setTodos(response.data);
       } catch (error) {
@@ -58,10 +61,7 @@ const Todos = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/todos",
-        newTodoFormData
-      );
+      const response = await axios.post(`${URL}/api/todos`, newTodoFormData);
 
       const newTodo = response.data;
 
@@ -81,7 +81,7 @@ const Todos = () => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:3000/api/todos/${editTodoID}`,
+        `${URL}/api/todos/${editTodoID}`,
         editTodoFormData
       );
 
@@ -103,12 +103,9 @@ const Todos = () => {
   // Handler for marking a todo as completed
   const handleCheckedTodo = async (id) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:3000/api/todos/${id}`,
-        {
-          status: "completed",
-        }
-      );
+      const response = await axios.patch(`${URL}/api/todos/${id}`, {
+        status: "completed",
+      });
 
       const updatedTodo = response.data;
 
@@ -125,7 +122,7 @@ const Todos = () => {
   // Handler for deleting a todo
   const handleDeleteTodo = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/todos/${deleteTodoID}`);
+      await axios.delete(`${URL}/api/todos/${deleteTodoID}`);
       const updatedTodoList = todos.map((todo) =>
         todo.id === deleteTodoID ? { ...todo, status: "deleted" } : todo
       );
