@@ -1,6 +1,8 @@
 # Software-Fellowship-2025
 This repository contains the Todo app developed as part of the Software Fellowship 2025, organized by [LOCUS](https://locus.com.np/)
 
+Demonstration: https://todos-locus.vercel.app
+
 ## Requirements
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/try/download/community)
