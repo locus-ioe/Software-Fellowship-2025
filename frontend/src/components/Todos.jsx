@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 import TodoStatusContainer from "./TodoStatusContainer";
 
@@ -6,12 +7,30 @@ import { FaCheck } from "react-icons/fa";
 import { FaArrowRotateRight } from "react-icons/fa6";
 import { IoIosAddCircle } from "react-icons/io";
 
-import { todosList } from "../assets/json/todos.json";
 import DeleteConfirmation from "./Deleteconfirmation";
 import Popup from "./Popup";
 
+const URL =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_SERVER_URL
+    : "http://localhost:3000";
+
 const Todos = () => {
-  const [todos, setTodos] = useState(todosList);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await axios.get(`${URL}/api/todos`);
+
+        setTodos(response.data);
+      } catch (error) {
+        console.error("Error fetching todos:", error);
+      }
+    };
+
+    fetchTodos();
+  }, []);
 
   const [newTodoFormData, setNewTodoFormData] = useState({
     title: "",
@@ -38,14 +57,18 @@ const Todos = () => {
     return todos.filter((todo) => todo.status === status);
   };
 
-  // Handler for creating a new todo
-  const handleCreateTodo = (e) => {
+  const handleCreateTodo = async (e) => {
     e.preventDefault();
 
-    // Placeholder for API call to add new todo
-    // Actual API call would fetch the new todo's ID from the backend
-    const newTodo = { ...newTodoFormData, id: todos.length, status: "ongoing" };
-    setTodos([...todos, newTodo]);
+    try {
+      const response = await axios.post(`${URL}/api/todos`, newTodoFormData);
+
+      const newTodo = response.data;
+
+      setTodos([...todos, newTodo]);
+    } catch (error) {
+      console.error("Error creating todo:", error);
+    }
 
     // Clear form data and close create todo popup
     setNewTodoFormData({ title: "", description: "" });
@@ -53,42 +76,62 @@ const Todos = () => {
   };
 
   // Handler for editing an existing todo
-  const handleEditTodo = (e) => {
+  const handleEditTodo = async (e) => {
     e.preventDefault();
 
-    // Placeholder for API call to update the todo in the backend with editTodoFormData
-    const updatedTodos = todos.map((todo) =>
-      todo.id === editTodoID ? editTodoFormData : todo
-    );
+    try {
+      const response = await axios.patch(
+        `${URL}/api/todos/${editTodoID}`,
+        editTodoFormData
+      );
 
-    setTodos(updatedTodos);
+      const updatedTodo = response.data;
+
+      const updatedTodos = todos.map((todo) =>
+        todo.id === editTodoID ? updatedTodo : todo
+      );
+
+      setTodos(updatedTodos);
+    } catch (error) {
+      console.error("Error editing todo:", error);
+    }
+
     setEditTodoID(null);
     setIsEditTodoActive(false);
   };
 
   // Handler for marking a todo as completed
-  const handleCheckedTodo = (id) => {
-    const updatedTodoList = todos.map((todo) => {
-      if (id === todo.id) {
-        todo.status = "completed";
-      }
-      return todo;
-    });
+  const handleCheckedTodo = async (id) => {
+    try {
+      const response = await axios.patch(`${URL}/api/todos/${id}`, {
+        status: "completed",
+      });
 
-    setTodos(updatedTodoList);
+      const updatedTodo = response.data;
+
+      const updatedTodoList = todos.map((todo) =>
+        todo.id === id ? updatedTodo : todo
+      );
+
+      setTodos(updatedTodoList);
+    } catch (error) {
+      console.error("Error marking todo as completed:", error);
+    }
   };
 
   // Handler for deleting a todo
-  const handleDeleteTodo = () => {
-    // Placeholder for API call to delete the todo in the backend
-    const updatedTodoList = todos.filter((todo) => {
-      if (deleteTodoID === todo.id) {
-        todo.status = "deleted";
-      }
-      return todo;
-    });
+  const handleDeleteTodo = async () => {
+    try {
+      await axios.delete(`${URL}/api/todos/${deleteTodoID}`);
+      const updatedTodoList = todos.map((todo) =>
+        todo.id === deleteTodoID ? { ...todo, status: "deleted" } : todo
+      );
 
-    setTodos(updatedTodoList);
+      setTodos(updatedTodoList);
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+    }
+
     setDeleteTodoID(null);
     setDeleteTaskConfirmation(false);
   };
