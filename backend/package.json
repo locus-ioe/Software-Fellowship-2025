@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for Todo app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locus-ioe/Software-Fellowship-2025.git"
+  },
+  "author": "locus_2025",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/locus-ioe/Software-Fellowship-2025/issues"
+  },
+  "homepage": "https://github.com/locus-ioe/Software-Fellowship-2025#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.0",
+    "nodemon": "^3.1.4"
+  }
+}
