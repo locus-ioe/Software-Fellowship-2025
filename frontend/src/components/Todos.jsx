@@ -21,7 +21,7 @@ const Todos = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get(`${SERVER_URL}/api/todos`);
+        const response = await axios.get(`${SERVER_URL}/api/v1/todos`);
 
         setTodos(response.data);
       } catch (error) {
@@ -62,7 +62,7 @@ const Todos = () => {
 
     try {
       const response = await axios.post(
-        `${SERVER_URL}/api/todos`,
+        `${SERVER_URL}/api/v1/todos`,
         newTodoFormData
       );
 
@@ -84,7 +84,7 @@ const Todos = () => {
 
     try {
       const response = await axios.patch(
-        `${SERVER_URL}/api/todos/${editTodoID}`,
+        `${SERVER_URL}/api/v1/todos/${editTodoID}`,
         editTodoFormData
       );
 
@@ -106,7 +106,7 @@ const Todos = () => {
   // Handler for marking a todo as completed
   const handleCheckedTodo = async (id) => {
     try {
-      const response = await axios.patch(`${SERVER_URL}/api/todos/${id}`, {
+      const response = await axios.patch(`${SERVER_URL}/api/v1/todos/${id}`, {
         status: "completed",
       });
 
@@ -125,7 +125,7 @@ const Todos = () => {
   // Handler for deleting a todo
   const handleDeleteTodo = async () => {
     try {
-      await axios.delete(`${SERVER_URL}/api/todos/${deleteTodoID}`);
+      await axios.delete(`${SERVER_URL}/api/v1/todos/${deleteTodoID}`);
       const updatedTodoList = todos.map((todo) =>
         todo.id === deleteTodoID ? { ...todo, status: "deleted" } : todo
       );
