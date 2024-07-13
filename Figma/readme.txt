@@ -1,0 +1,2 @@
+Slides: https://www.figma.com/slides/bXPSbmCIhZeXDrBdOCHcTo/Figma-Tutorial-Slides?node-id=8-985&t=gBLHpcN3GsdgjZfG-1
+To-Do App: https://www.figma.com/design/miunlGD5iNnlG3vDw9UEtf/Todo-App?node-id=0-1&t=13mD1o87YaYgD9LQ-1
