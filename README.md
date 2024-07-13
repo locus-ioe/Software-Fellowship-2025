@@ -1,7 +1,7 @@
 # Software-Fellowship-2025
-This repository contains the Todo app developed as part of the Software Fellowship 2025, organized by [LOCUS](https://locus.com.np/).
+This repository contains the Todo app developed as part of the Software Fellowship 2025, organized by [LOCUS](https://locus.com.np/)
 
-Live demonstration: https://todos-locus.vercel.app/
+Demonstration: https://todos-locus.vercel.app
 
 ## Requirements
 - [Node.js](https://nodejs.org/en/)
@@ -26,7 +26,7 @@ cd ../backend
 npm install
 ```
 
-4. Create a `.env` file inside the backend folder with the following credential:
+4. Create a `.env` file inside the backend folder with the following content:
 ```
 #.env
 MONGODB_URI="mongodb://0.0.0.0:27017/todos-db"
