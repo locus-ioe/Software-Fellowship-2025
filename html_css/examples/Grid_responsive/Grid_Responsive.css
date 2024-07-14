@@ -1,0 +1,88 @@
+.grid-container {
+    display: grid; /* Turns the element into a grid container */
+
+    height: 100vh;
+}
+
+.grid-item {
+    background-color: #20B2AA;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: center;
+    max-height: 200px;
+}
+
+/* Grid Template Rows */
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 100px 200px; /* Defines the size of the rows in the grid */
+}
+
+/* Grid Template Columns */
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 100px 200px;
+    grid-template-columns: 1fr 2fr; /* Defines the size of the columns in the grid */
+    font-size: 2rem;
+}
+
+
+/* Grid template Areas */
+.grid-container{
+    grid-template-areas: 
+    "area1 area2"
+    "area3 area3"
+    "area4 area4"; /* Defines the grid areas */
+}
+
+.item-1 {
+    grid-area: area1; /* Assigns this item to area1 */
+}
+
+.item-2 {
+    grid-area: area2; /* Assigns this item to area2 */
+}
+
+.item-3 {
+    grid-area: area3; /* Assigns this item to area3 */
+}
+
+.item-4 {
+    grid-area: area4; /* Assigns this item to area4 */
+}
+
+/* Gap */
+.grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Defines the size of the columns in the grid */
+    grid-gap: 20px; /* Sets the gap between rows and columns */
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Stacks items vertically on smaller screens */
+        grid-template-areas: 
+            "area1"
+            "area2"
+            "area3"
+            "area4"; /* Adjusts the grid areas for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        font-size: 1.5rem; /* Adjusts font size for even smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        font-size: 1rem; /* Adjusts font size for mobile screens */
+    }
+}

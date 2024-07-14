@@ -1,0 +1,51 @@
+.flex-container {
+    display: flex; /* Turns the element into a flex container */
+    height: 100vh;
+}
+
+.flex-item {
+    background-color: #20B2AA;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: center;
+    height: 20px;
+    width: 300px;
+}
+
+/* Flex direction */
+
+.flex-container {
+    display: flex;
+    flex-direction: row; /* Default value, items arranged in a row */
+}
+
+/* Justify Content */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Aligns items along the main axis */
+}
+
+
+/* Align Items */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Aligns items along the cross axis */
+}
+
+
+/* Flex wrap */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+     flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+}

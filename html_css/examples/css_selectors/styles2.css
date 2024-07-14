@@ -1,0 +1,26 @@
+/* Element Selector: Selects all <p> elements */
+p {
+    color: blue;
+}
+
+/* Class Selector: Selects elements with class="highlight" */
+.highlight {
+    background-color: yellow;
+}
+
+/* ID Selector: Selects the element with id="unique" */
+#unique {
+    font-weight: bold;
+    color: red;
+}
+
+/* Universal Selector: Selects all elements */
+* {
+    font-family: Arial, sans-serif;
+}
+
+/* Attribute Selector: Selects elements with type="text" */
+[type="text"] {
+    border: 2px solid green;
+    padding: 5px;
+}
