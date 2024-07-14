@@ -1,0 +1,48 @@
+/* styles.css */
+
+/* Styling for the .movie-info class */
+.movie-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Styling for the img tag within .movie-info */
+.movie-info img {
+    max-width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the .details div within .movie-info */
+.details {
+    max-width: 600px;
+}
+
+/* Styling for headings and paragraphs */
+.movie-info h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.movie-info h2 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #666;
+}
+
+.movie-info p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    color: #555;
+}

@@ -1,0 +1,50 @@
+/* Color: Sets the text color */
+.color-example {
+    color: red;
+}
+
+/* Background: Sets the background color */
+.background-example {
+    background-color: blue;
+    color: white; /* Set text color to white for contrast */
+}
+
+/* Font: Sets font properties */
+.font-example {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Text Alignment: Aligns text within an element */
+.text-align-example {
+    text-align: center;
+}
+
+/* Margin: Sets the outer spacing of an element */
+.margin-example {
+    margin: 20px;
+    background-color: lightgray; /* Added background to see the margin */
+}
+
+/* Padding: Sets the inner spacing of an element */
+.padding-example {
+    padding: 20px;
+    background-color: lightyellow; /* Added background to see the padding */
+}
+
+/* Display: Specifies how an element should be displayed */
+.display-block {
+    display: block;
+    background-color: lightgreen; /* Added background to see the block display */
+}
+
+.display-inline {
+    display: inline;
+    background-color: lightcoral; /* Added background to see the inline display */
+}
+
+.display-inline-block {
+    display: inline-block;
+    background-color: lightblue; /* Added background to see the inline-block display */
+    padding: 10px; /* Added padding for better visibility */
+}

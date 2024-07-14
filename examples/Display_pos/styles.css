@@ -1,0 +1,96 @@
+/* External CSS file */
+
+/* Display Property Examples */
+.display-none {
+    display: none;/* hides the display element*/
+}
+
+.display-block {
+    display: block;/* display the element as block element*/
+    width: 150px;
+    height: 150px;
+    background-color: lightblue;
+    margin: 10px;
+}
+
+.display-inline {
+    display: inline;/* display as inline element, not starting in new line and taking required space only*/
+    width: 150px;
+    height: 150px;
+    background-color: lightcoral;
+    margin: 10px;
+}
+
+.display-inline-block {
+    display: inline-block;/*combination of inline and block*/
+    width: 150px;
+    height: 150px;
+    background-color: lightgreen;
+    margin: 10px;
+}
+
+/* Position Property Examples */
+.position-static {
+    position: static;/*element placed according to normal flow of the document*/
+    width: 150px;
+    height: 150px;
+    background-color: yellow;
+    margin: 10px;
+}
+
+.position-relative {
+    position: relative;/*relative to the normal position*/
+    left: 20px;
+    top: 20px;
+    width: 150px;
+    height: 150px;
+    background-color: orange;
+    margin: 10px;
+}
+
+.position-absolute {
+    position: absolute; /* absolute from its nearest neighbour element*/
+    left: 400px;
+    top: 100px;
+    background-color: pink;
+    margin: 10px;
+}
+
+
+.position-fixed {
+    position: fixed;/*stay fixed even in page is scrolled*/
+    right: 0;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    background-color: purple;
+    margin: 10px;
+}
+
+/* Sticky Position Example */
+.sticky-element {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Stick to the top of the container */
+    background-color: lightblue;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid blue;
+    margin-bottom: 10px;
+}
+
+/* Container for positioning examples */
+.container {
+    position: relative;
+    height: 400px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.scroll-container {
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+}
