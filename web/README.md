@@ -14,7 +14,7 @@ git clone https://github.com/locus-ioe/Software-Fellowship-2025.git
 
 2. Navigate to the repository :open_file_folder:
 ```
-cd Software-Fellowship-2025
+cd Software-Fellowship-2025/web
 ```
 
 3. Install the dependencies
