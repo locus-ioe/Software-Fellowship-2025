@@ -1,3 +1,8 @@
+//Variable
+
+let message;
+message = "Hello, world!";
+console.log(message);
 
 // Data Types
 
@@ -160,6 +165,7 @@ let matrix = [
 console.log(matrix[1][1]);  // 5
 
 
+
 // 8. Array Methods
 console.log(fruits.length);  // 3
 console.log(fruits);  // [ 'Apple', 'Pear', 'Plum' ]
@@ -178,14 +184,19 @@ console.log(arr);  // [ 'Apple', 'Pear' ]
 console.log(arr.splice(1, 0, "Orange"));  // []
 console.log(arr);  // [ 'Apple', 'Orange', 'Pear' ]
 
+
 console.log(arr.slice(1, 2));  // [ 'Orange' ]
 console.log(arr);  // [ 'Apple', 'Orange', 'Pear' ]
+
+
+
 
 console.log(arr.concat("Kiwi"));  // [ 'Apple', 'Orange', 'Pear', 'Kiwi' ]
 console.log(arr);  // [ 'Apple', 'Orange', 'Pear' ]
 
 console.log(arr.concat(["Kiwi", "Banana"]));  // [ 'Apple', 'Orange', 'Pear', 'Kiwi', 'Banana' ]
 console.log(arr);  // [ 'Apple', 'Orange', 'Pear' ]
+
 
 console.log(arr.indexOf("Orange"));  // 1
 console.log(arr.includes("Orange"));  // true
@@ -195,3 +206,82 @@ console.log(arr);  // [ 'Pear', 'Orange', 'Apple' ]
 
 console.log(arr.join("-"));  // Pear-Orange-Apple
 console.log(arr);  // [ 'Pear', 'Orange', 'Apple' ]
+
+
+let organizers = 'Locus, Techaxis, JobAXL';
+
+let individual = organizers.split(', ');
+
+console.log(individual);  // [ 'Locus', 'Techaxis', 'JobAXL' ]
+for (let name of individual) {
+  console.log( `A message to ${name}.` ); // A message to Locus  (and other names)
+}
+
+//map
+let numbers = [1, 2, 3, 4, 5];
+let output = numbers.map((x) => x * 2);
+console.log(numbers);
+console.log(output);
+
+//filter
+let filtered = numbers.filter((x) => x % 2 === 0);
+console.log(filtered);
+console.log(numbers);
+
+//reduce
+let sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue, 0
+);
+console.log(sum);
+
+
+//switch example
+
+let trafficLight = "green";
+// let trafficLIght = prompt("What is the color of the traffic light?");
+
+switch (trafficLight) {
+  case "green":
+    console.log("Drive safely");
+    break;
+  case "yellow":
+    console.log("Slow down");
+    break;
+  case "red":
+    console.log("Stop immediately");
+    break;
+  default:
+    console.log("Invalid traffic light color");
+}
+
+
+//For loop
+for (let i = 0; i < 10; i++) {
+  console.log("I am a Softwarefellow");
+}
+
+// // ADVANCED
+// function ask(question, yes, no) {
+//     if (confirm(question)) yes()
+//     else no();
+//   }
+  
+//   function showOk() {
+//     alert( "You agreed." );
+//   }
+  
+//   function showCancel() {
+//     alert( "You canceled the execution." );
+//   }
+  
+//   // usage: functions showOk, showCancel are passed as arguments to ask
+//   ask("Do you agree?", showOk, showCancel);
+
+
+  // more slice
+
+  let temp = ["hello", 1, 2, 3, 4, 5]
+
+  console.log(temp.slice(1, 4));  
+
+  console.log(temp.slice(-1));

@@ -49,16 +49,16 @@ console.log("Apple,Orange,Pear".split(", "));
 //map
 let numbers = [1, 2, 3, 4, 5];
 let output = numbers.map((x) => x * 2);
-console.log(numbers);
-console.log(output);
+console.log(numbers); // [1, 2, 3, 4, 5]
+console.log(output);  // [2, 4, 6, 8, 10]
 
 //filter
 let filtered = numbers.filter((x) => x % 2 === 0);
-console.log(filtered);
-console.log(arr);
+console.log(filtered); // [2, 4]
+console.log(numbers); // [1, 2, 3, 4, 5]
 
 //reduce
 let sum = numbers.reduce(
   (accumulator, currentValue) => accumulator + currentValue
-);
+);  // 15
 console.log(sum);

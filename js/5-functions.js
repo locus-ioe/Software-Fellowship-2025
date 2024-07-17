@@ -1,9 +1,11 @@
 //functions
 
+//function declaration
 function product(a, b) {
   return a * b;
 }
 
+//function expression
 let result = product(5, 3);
 console.log(result);
 

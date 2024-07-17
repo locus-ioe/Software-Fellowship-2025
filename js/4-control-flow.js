@@ -23,6 +23,7 @@ console.log(scholarShip);
 //switch example
 
 let trafficLight = "green";
+// let trafficLIght = prompt("What is the color of the traffic light?");
 
 switch (trafficLight) {
   case "green":
